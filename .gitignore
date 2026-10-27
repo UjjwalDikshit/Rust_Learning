@@ -1,0 +1,9 @@
+# Ignore these specific folders anywhere in the project
+1day/
+2day/
+3day/
+new_project/
+
+# Ignore all executable and debug symbol files anywhere in the project
+*.exe
+*.pdb
