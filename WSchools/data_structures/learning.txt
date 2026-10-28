@@ -1,0 +1,36 @@
+In Rust, this syntax is called an if let expression. It is a concise way to handle values that might or might not exist without writing a full match statement.
+Specifically, if let Some(city) = capitalCities.get("England") checks if the key "England" exists in the capitalCities map. If it exists, it extracts the value, assigns it to the variable city, and runs the code inside the curly braces {}.
+Here is the breakdown of exactly how it works:
+## 🧩 The Breakdown
+
+* capitalCities.get("England"): Looks up "England" in a map (like a HashMap). In Rust, looking up a key doesn't return the value directly because the key might not exist. Instead, it returns an Option enum, which is either Some(value) or None.
+* Some(city): This is the pattern Rust is trying to match. If the map successfully found "England", the result will be wrapped in Some.
+* if let: This tells Rust: "If the result on the right matches the pattern on the left, unwrap the value, bind it to the new variable city, and execute the block." If the result is None, Rust simply skips the block.
+
+## 🔄 if let vs. match
+This syntax is just shorthand (syntactic sugar) for a standard match statement. These two code snippets do the exact same thing:
+Using if let (Concise):
+
+if let Some(city) = capitalCities.get("England") {
+    println!("The capital is {}", city);
+}
+
+Using match (Verbose):
+
+match capitalCities.get("England") {
+    Some(city) => println!("The capital is {}", city),
+    None => {} // Do nothing if the key doesn't exist
+}
+
+## 💡 Key Benefits
+
+* Removes Boilerplate: You don't have to write an empty None => {} arm just to handle a single successful case.
+* Creates a Local Variable: The variable city is safely unwrapped and is only accessible inside that specific {} block.
+
+If you want, let me know:
+
+* Do you want to see how to add an else block to handle the None case?
+* Are you working with HashMap or a custom data structure?
+* Would you like an explanation of how the Option type works in Rust?
+
+
